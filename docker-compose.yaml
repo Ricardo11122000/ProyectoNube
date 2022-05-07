@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    environment:
+    - POSTGRES_HOST = db
+    - POSTGRES_DB=ProyectoNube
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=11122000
+    ports:
+      - 5432
+    
+  django_app:
+    ports:
+      - "8000"
+    build: .
+    environment:
+      - DB_HOST=db
+      - DB_NAME=ProyectoNube
+      - DB_USER=postgres
+      - DB_PASSWORD=11122000
+    volumes:
+      - .:/code
+      - static:/code/staticfiles
+      - media:/code/media  
+    depends_on: 
+      - db
+
+  nginx:
+    image: nginx:1.21.6
+    ports:
+      - 8000:8000
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static:/code/staticfiles
+      - media:/code/media
+    depends_on:
+      - django_app
+
+volumes:
+  .:
+  static:
+  media:
