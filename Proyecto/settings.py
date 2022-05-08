@@ -91,9 +91,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER':'postgres',
-        'DATABASE_NAME':'ProyectoNube',
         'PASSWORD':'11122000',
-        'HOST': 'db',
+        'HOST': 'database-1.ctgmvg2mhx9s.us-east-1.rds.amazonaws.com',
         'DATABASE_PORT':'5432',
     }
 }
@@ -167,3 +166,4 @@ EMAIL_USE_SSL = False
 AXES_ONLY_USER_FAILURES = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+

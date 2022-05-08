@@ -4,8 +4,8 @@ services:
   db:
     image: postgres
     environment:
-    - POSTGRES_HOST = db
-    - POSTGRES_DB=ProyectoNube
+    - POSTGRES_HOST=database-1.ctgmvg2mhx9s.us-east-1.rds.amazonaws.com
+    - POSTGRES_DB=postgres
     - POSTGRES_USER=postgres
     - POSTGRES_PASSWORD=11122000
     ports:
@@ -16,14 +16,14 @@ services:
       - "8000"
     build: .
     environment:
-      - DB_HOST=db
-      - DB_NAME=ProyectoNube
+      - DB_HOST=database-1.ctgmvg2mhx9s.us-east-1.rds.amazonaws.com
+      - DB_NAME=postgres
       - DB_USER=postgres
       - DB_PASSWORD=11122000
     volumes:
       - .:/code
-      - static:/code/staticfiles
-      - media:/code/media  
+      - static:/code/staticfiles/
+      - media:/code/media/  
     depends_on: 
       - db
 
@@ -33,8 +33,8 @@ services:
       - 8000:8000
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
-      - static:/code/staticfiles
-      - media:/code/media
+      - static:/code/staticfiles/
+      - media:/code/media/
     depends_on:
       - django_app
 

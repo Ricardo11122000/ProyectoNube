@@ -32,11 +32,11 @@ def acceder(request):
             nombre_user = Fallos['username']
             intentos = AccessAttempt.objects.get(username = nombre_user)
             conexion = psycopg2.connect(
-            host = "db",
+            host = "database-1.ctgmvg2mhx9s.us-east-1.rds.amazonaws.com",
             port =  "5432",
             user = "postgres", 
             password = "11122000", 
-            dbname = "ProyectoNube")
+            dbname = "postgres")
             cursor = conexion.cursor()
             SQL = f"SELECT failures_since_start FROM axes_accessattempt WHERE username = '{nombre_user}';"
             cursor.execute(SQL)
