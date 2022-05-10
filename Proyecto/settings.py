@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,6 +49,7 @@ INSTALLED_APPS = [
     'adopcion',
     'Reportes',
     'import_export',
+    'storages',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -166,4 +168,16 @@ EMAIL_USE_SSL = False
 AXES_ONLY_USER_FAILURES = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+AWS_ACCESS_KEY_ID = 'AKIAQU5N5PCSIJKDVTFD'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'ricardosandoval11bucket'
+
+AWS_S3_FILE_OVERWRITE = True
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 
